@@ -31,6 +31,10 @@ class AmplitudeClient implements AmplitudeClientInterface
         if (null !== $apiKey) {
             $this->setApiKey($apiKey);
         }
+
+        if (is_null($apiKey) && $key = getenv('AMPLITUDE_API_KEY')) {
+            $this->setApiKey($key);
+        }
     }
 
     /**

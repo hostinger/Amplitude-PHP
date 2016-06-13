@@ -1,6 +1,11 @@
 Amplitude PHP
 =============
 
+Install
+-------------
+
+`composer require hostinger/amplitude-php`
+
 How to use it
 -------------
 
