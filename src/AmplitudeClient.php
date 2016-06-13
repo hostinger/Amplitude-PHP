@@ -1,7 +1,7 @@
 <?php
 namespace Amplitude;
 
-use Guzzle\Http\Client;
+use GuzzleHttp\Client;
 
 /**
  * Default Amplitude client implementation
@@ -47,8 +47,9 @@ class AmplitudeClient implements AmplitudeClientInterface
      */
     public function track(Message\Event $event)
     {
-        $request = $this->getClient()->post(null, null, $this->getPostBody($event));
-        return $request->send();
+        $this->getClient()->request('POST', null, array(
+            'form_params' => $this->getPostBody($event)
+        ));
     }
 
     /**
@@ -71,7 +72,7 @@ class AmplitudeClient implements AmplitudeClientInterface
     protected function getClient()
     {
         if (null === $this->client) {
-            $this->client = new Client(self::AMPLITUDE_URL);
+            $this->client = new Client(array('base_uri'=>self::AMPLITUDE_URL));
         }
         return $this->client;
     }
