@@ -1,6 +1,6 @@
 {
   "name": "hostinger/amplitude-php",
-  "version": "0.0.2",
+  "version": "1.0.0",
   "require": {
     "ext-curl": "*",
     "ext-json": "*",
